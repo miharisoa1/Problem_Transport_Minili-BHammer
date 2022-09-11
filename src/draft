@@ -1,0 +1,44 @@
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import "./styles.css";
+
+/**
+ * https://stackoverflow.com/questions/69900623/no-routes-matched-location-login-react-router-dom-v6
+ */
+
+const Login = () => <h1>Login</h1>;
+
+const GuestLayout = ({ children, ...rest }) => {
+  return <div>{children}</div>;
+};
+
+const GuestRoute = ({ component: Component, ...rest }) => {
+  return (
+    <GuestLayout>
+      <Routes>
+        {/* Comment/uncomment this route to see/hide warning */}
+        <Route path="/" element={<div>Home</div>} />
+
+        <Route {...rest} element={<Component />} />
+      </Routes>
+    </GuestLayout>
+  );
+};
+
+const AppRoute = () => {
+  return (
+    <>
+      <GuestRoute path="/login" component={Login} />
+    </>
+  );
+};
+
+export default function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Link to="/login">Go to login</Link>
+        <AppRoute />
+      </div>
+    </Router>
+  );
+}

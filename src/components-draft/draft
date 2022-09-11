@@ -1,0 +1,78 @@
+import './App.css';
+import React, { Component } from "react";
+import Mycars from './components-draft/Mycars';
+import Maman from './components-draft/Maman';
+import Form from './components-draft/Form';
+import LifeCycle from './components-draft/LifeCycle';
+import Menu from './components-draft/Menu';
+import { BrowserRouter as Router, Match , Route} from 'react-router-dom';
+
+
+class App extends Component {
+
+  state = {
+    titre : 'Catalogue Voiture',
+    display: true
+  }
+
+  effacerOuAfficher = () => {
+    this.setState({
+      display: !this.state.display
+    })
+  }
+
+  // changeTitle = () => {
+  //   this.setState({
+  //     titre : "Titre changé en dur"}
+  //   )
+  // }
+
+  // changeViaParam = (titre) => {
+  //   this.setState({
+  //     titre : titre
+  //   })
+  // }
+
+  // changeViaBind = (param) => {
+  //   this.setState({
+  //     titre: param
+  //   })
+  // }
+
+  // changeViaInput = (e) => {
+  //   this.setState({
+  //     titre: e.target.value
+  //   })
+  // }
+
+  render() {
+    const showComponent = this.state.display ? ( <LifeCycle name="Toto 2"></LifeCycle>) : (<div>Rien à afficher</div>)
+    
+  return (
+    <div className="App"> 
+    <Router>
+      <Menu/>
+      <Router path="/" Component={Maman}> </Router>
+    </Router>
+   
+
+  {  //  showComponent
+  
+   
+    //  <button onClick={this.effacerOuAfficher}>Click here !!</button>
+    } 
+      { //<Mycars title = {this.state.titre}></Mycars>
+
+    //  <button onClick={this.changeTitle}>En dur</button>
+    //  <button onClick={() => this.changeViaParam('Titre changé via param')}>Via param</button>
+    //  <button onClick={this.changeViaBind.bind(this, 'Titre changé via bind')}>Via bind</button>
+    // <input type="text" onChange={this.changeViaInput} value={this.state.titre}/>
+    // {
+    //   Math.random()
+    // }
+  }
+    </div>
+  );}
+}
+
+export default App;

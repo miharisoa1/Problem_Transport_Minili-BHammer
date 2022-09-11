@@ -1,0 +1,74 @@
+.Truc {
+  .tabs{
+    $side: 2em;
+    padding-top: 1em;
+    display: flex;
+    justify-content: space-evenly;
+    .tab, .step{
+      position: relative;
+      font-size: 1.2em;
+      width: calc(var(--w) * $side);
+      height: calc(var(--h) * $side);
+      .cell{
+        width: $side;
+        height: $side;
+        //box-shadow: 0 0 0 1px #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: calc(var(--x) * $side);
+        top: calc(var(--y) * $side);
+        &.amount{
+          font-weight: bold;
+          background: rgb(252, 135, 135);
+          color: #fff;
+        }
+        &.marked{
+          background-color: rgba(255, 255, 0, 0.286);
+        }
+        &.min:before{
+          content: '';
+          position: absolute;
+          inset: 2px;
+          background: rgba(dodgerblue, .3);
+          border-radius: 100%;
+          z-index: -1;
+        }
+        &.num{
+          color: #aaa;
+        }
+      }
+    }
+  }
+  .step-buttons{
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 1em;
+    gap: 1em;
+    .stepstep{
+      color: #555;
+      font-size: .9em;
+    }
+    .z{
+      font-size: 1.2em;
+      span{
+        font-weight: bold;
+      }
+    }
+    .stepbutton{
+      cursor: pointer;
+      padding: .5em 2em;
+      border-radius: .2em;
+      background: dodgerblue;
+      color: #fff;
+      &.inactive{
+        pointer-events: none;
+        opacity: .6;
+        background: #888;
+      }
+    }
+  }
+}
